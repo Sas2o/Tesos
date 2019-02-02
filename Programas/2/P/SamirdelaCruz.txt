@@ -1,0 +1,10 @@
+# Solucion a la primera pregunta
+
+ls *.txt > archivos
+wc -w archivos
+
+#Solucion a la segunda pregunta
+wc -w *.txt
+
+#Solucion a la tercera pregunta
+wc -c *.txt
