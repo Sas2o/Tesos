@@ -104,19 +104,16 @@ else:
 # In[75]:
 
 
-p_prime=np.sum(P_i)
-X_new=np.zeros((n,int(p_prime)))
-Y_new=np.zeros((n,int(p_prime)))
+p_prime=int(np.sum(P_i))
+X_new=np.zeros((n,p_prime))
 aux=0
 for i in range(p):
     if P_i[i]==1:
         X_new[:,aux]=X[:,i]
-        Y_new[:,aux]=X[:,i]
         aux+=1
-n=X_new.shape[0]
-p=X_new.shape[1]
 X=X_new
-Y=Y_new
+p=p_prime
+
 XT=X.T
 YT=Y.T
 Inv=np.linalg.inv(np.matmul(XT,X))
@@ -157,7 +154,7 @@ sigmamatrix=sigma2*Inv
 sigma_i=np.zeros(p)
 for i in range(p):
     sigma_i[i]=sigmamatrix[i,i]
-sigma_i=np.sqrt(abs(sigma_i))
+sigma_i=np.sqrt(sigma_i)
 
 
 # In[64]:
@@ -175,25 +172,11 @@ MST=SST[0,0]/(n-1)
 # In[65]:
 
 
-F_new=(Rsq_new*(n-p-1))/((1-Rsq)*p) #F_new
+F_new=(Rsq_new*(n-p-1))/((1-Rsq_new)*p) #F_new
 
 # In[66]:
 
 
-Rango=0.9 # se define un rango, es decir cuanto porcentaje de la curva se quiere
-Ftest=f.ppf(Rango,p,n-(p+1))
-P_i=np.zeros(p)
-if F > Ftest:
-    tzeros=beta[:,0]/sigma_i
-    P_value=2*(1-norm.cdf(tzeros)) # se integran las colas
-    for i in range(p):
-        if P_value[i]<0.5:
-            P_i[i]=1
-        else:
-            P_i[i]=0
-else:
-    #print("paila")
-    quit()
 
 
 # In[75]:
