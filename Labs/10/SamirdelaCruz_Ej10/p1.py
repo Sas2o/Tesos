@@ -19,7 +19,7 @@ from scipy.stats import norm
 seed=int(sys.argv[1])
 np.random.seed(seed)
 n=500 # mediciones efectuadas
-p=50 # variables medidas
+p=100 # variables medidas
 mu=0.0
 sigma=1.0
 X=np.random.normal(mu,sigma,size=(n,p))
@@ -182,4 +182,4 @@ F_new=(Rsq_new*(n-p-1))/((1-Rsq_new)*p) #F_new
 # In[75]:
 
 
-print(str(Rsq)+" "+str(F)+" "+str(Rsq_new)+" "+str(F_new))
+print(Rsq,F,Rsq_new,F_new)

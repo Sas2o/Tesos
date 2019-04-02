@@ -10,7 +10,7 @@ for i in range(4):
 	h=datos[:,i]
 	plt.title(T[i])
 	plt.hist(h, bins=60, alpha=1, edgecolor = 'black',  linewidth=1)
-plt.savefig("histogram.png")
+plt.savefig(sys.argv[2])
 
 
 
